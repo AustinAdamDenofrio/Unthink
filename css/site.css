@@ -119,6 +119,12 @@ footer .bi:hover{
 
 .btn-primary {
     background-color: var(--ad-theme-600);
+    border-color: var(--ad-theme-700);
+}
+
+.btn-primary:hover {
+    background-color: var(--ad-theme-700);
+    border-color: var(--ad-theme-900);
 }
 
 #app-title {

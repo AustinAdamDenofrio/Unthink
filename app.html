@@ -54,11 +54,75 @@
     </header>
 
 
-    <main class="container-xxl py-3 mt-3">
-        <h1>APP UI goes here</h1>
-        <label>Secret Message</label>
-        <input id="message" type="text" value="Hello, World!" placeholder="Enter a Message" />
-        <button id="btnSubmit" class="btn btn-primary">Display Message</button>
+    <main class="container py-3">
+       <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+                <!-- Info -->
+                <h1 class="fw-bold">Unthink: Code Challenge</h1>
+                <p class="lead">
+                    Have you ever been counting and lost track of what number you were on? Ever wanted to know
+                    all the numbers between two values? We built a number counter for you so you never have to
+                    struggle again. We've taken all the heavy lifting out of numbers. We use Javascript loops
+                    and HTML properties to do the work behind the to count from 0-100 and display the output to you!
+                </p>
+                <h2 class="mt-5 border-2 border-bottom" >Instructions</h2>
+                <p>
+                    Choose 2 values, a lower and a higher number, and click submit. 
+                    The app will run it's brainy calculations and display the numbers on the screen.
+                </p>
+            </div>
+            <div class="col">
+                <!-- App UI -->
+                <form>
+                    <h3>Enter Values</h3>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="startNumber" class="form-label">Start Number</label>
+                            <input 
+                                id="startNumber" 
+                                class="form-control"
+                                name="startNumber"
+                                placeholder="Start Number"
+                                aria-label="Start Number"
+                                type="number"
+                                required 
+                                value="0"
+                                max="100"
+                                min="0"/>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="endNumber" class="form-label">End Number</label>
+                            <input 
+                                id="endNumber" 
+                                class="form-control"
+                                name="endNumber"
+                                placeholder="End Number"
+                                aria-label="End Number"
+                                type="number"
+                                required 
+                                value="100"
+                                max="100"
+                                min="1"/>
+                        </div>
+                        <div class="col col-12 text-end">
+                            <button class="btn btn-primary" id="btnSubmit" type="button">
+                                Calculate
+                            </button>
+                        </div>
+
+                    </div>                    
+                </form>
+                <h2 class="mt-5 border-bottom border-2">Results</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody id="results">
+                            <!-- Results go here -->
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+       </div>
     </main>
 
 
@@ -104,8 +168,10 @@
 
     <script>
         let button = document.getElementById('btnSubmit');
-        button.addEventListener('click', displayMessage);
+        button.addEventListener('click', getValues);
     </script>
+
+
 </body>
 
 </html>
