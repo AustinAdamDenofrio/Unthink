@@ -5,7 +5,7 @@ function displayMessage() {
     let message = inputBox.value;
 
     Swal.fire({
-        title: "*APP Name*",
+        title: "UnThink",
         text: message,
         icon: "success",
         backdrop: false
