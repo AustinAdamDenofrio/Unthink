@@ -19,8 +19,6 @@ body {
     display: flex;
     flex-direction: column;
     font-family: var(--ad-font-body);
-    font-weight: 500;
-    font-size: larger;
 }
 
 /* Custom Font Classes */
