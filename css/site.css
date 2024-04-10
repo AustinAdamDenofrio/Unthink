@@ -4,6 +4,9 @@
 :root {
     --ad-dark-color: #212121;
     --ad-light-color: #ebebeb; 
+    --ad-font-title: "Merriweather", sans-sarif;
+    --ad-font-subTitle: "Lato", sans-sarif;
+    --ad-font-body: "Roboto", sans-sarif;
 }
 
 /* #region Stick Footer */
@@ -15,7 +18,21 @@ html,body {
 body {
     display: flex;
     flex-direction: column;
+    font-family: var(--ad-font-body);
+    font-weight: 500;
+    font-size: larger;
 }
+
+/* Custom Font Classes */
+.mainTitle {
+    font-family: var(--ad-font-title);
+}
+
+.subTitle {
+    font-family: var(--ad-font-subTitle);
+}
+
+
 
 main {
     flex-grow: 1;
@@ -32,6 +49,8 @@ footer {
 nav, footer {
     background-color: var(--ad-theme-900);    
     color: var(--ad-theme-100);
+    font-family: var(--ad-font-Title);
+    font-weight: 400;
 }
 
 .nav-link {
