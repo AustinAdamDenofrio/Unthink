@@ -12,13 +12,24 @@ function getValues() {
   startNumber = Number(startNumber)
   endNumber = Number(endNumber)
 
-  // run the function, passing the numbers, itll make an array and itll pass back an array.
-  let generatedNumbers = generateValues(startNumber, endNumber);
+  // Validate if the input values are numbers before continuing or run error message.
+  if (isNaN(startNumber) || isNaN(endNumber)) {
+    // display an error message
+    swal.fire({
+      icon:'error',
+      title: 'Oops!',
+      backdrop: false,
+      text: `Please enter a valid number for Unthink to work properly.`
+    });
 
-  displayValues(generatedNumbers);
+  } else {
+    // run the function, passing the numbers, itll make an array and itll pass back an array.
+    let generatedNumbers = generateValues(startNumber, endNumber);
+    displayValues(generatedNumbers);
+  }
+
 
 }
-
 
 
 
@@ -43,18 +54,38 @@ function generateValues(start, end) {
 // display in results table
 function displayValues(numberArray) {
 
-  // numberArray = [0,1,2,3,....]
+  // placeholder for storing numberArray = [0,1,2,3,....]
   let tableHtml = '';
 
   for (let index = 0; index < numberArray.length; index = index + 1) {
 
-    let number = numberArray[index];
+      let number = numberArray[index];
+      let className = '';
 
-    tableHtml = tableHtml + '<tr><td>' + number + '</td></tr>';
+      // if number is even
+      if (number % 2 == 0) {
+          // write class 'even'
+          className = 'even'; 
+      } else {      
+          // write class 'odd'
+          className = 'odd';
+      }
+
+      tableHtml += `<tr><td class="${className}">${number}</td></tr>`;
 
   }
 
+  // grab an HTML Element by ID and store in a let to prepare to change property
   let tbody = document.getElementById('results');
-
+  // Change property of HTML element
   tbody.innerHTML = tableHtml;
 }
+
+
+
+{/* 
+<tr><td class="odd">1</td></tr>
+<tr><td class="even">2</td></tr>
+<tr><td class="odd">3</td></tr>
+<tr><td class="even">4</td></tr> 
+*/}
