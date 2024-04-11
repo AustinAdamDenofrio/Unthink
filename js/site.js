@@ -83,9 +83,9 @@ function displayValues(numberArray) {
 
 
 
-{/* 
+/* 
 <tr><td class="odd">1</td></tr>
 <tr><td class="even">2</td></tr>
 <tr><td class="odd">3</td></tr>
 <tr><td class="even">4</td></tr> 
-*/}
+*/
