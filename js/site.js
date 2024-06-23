@@ -1,5 +1,3 @@
-// Collect user inputs
-// AKA the Entry Point
 function getValues() {
   // get an input element for startNumber and grab its value.
   let startNumber = document.getElementById('startNumber').value;
@@ -21,17 +19,12 @@ function getValues() {
       backdrop: false,
       text: `Please enter a valid number for Unthink to work properly.`
     });
-
   } else {
     // run the function, passing the numbers, itll make an array and itll pass back an array.
     let generatedNumbers = generateValues(startNumber, endNumber);
     displayValues(generatedNumbers);
   }
-
-
 }
-
-
 
 
 // generate a list of numbers between those 2 values
@@ -44,11 +37,6 @@ function generateValues(start, end) {
 
   return numbers;
 }
-
-
-
-
-
 
 
 // display in results table
@@ -72,7 +60,6 @@ function displayValues(numberArray) {
       }
 
       tableHtml += `<tr><td class="${className}">${number}</td></tr>`;
-
   }
 
   // grab an HTML Element by ID and store in a let to prepare to change property
@@ -80,12 +67,3 @@ function displayValues(numberArray) {
   // Change property of HTML element
   tbody.innerHTML = tableHtml;
 }
-
-
-
-/* 
-<tr><td class="odd">1</td></tr>
-<tr><td class="even">2</td></tr>
-<tr><td class="odd">3</td></tr>
-<tr><td class="even">4</td></tr> 
-*/

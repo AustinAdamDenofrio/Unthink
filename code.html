@@ -71,31 +71,120 @@
 
             <!-- The Code Example -->
             <div class="col-12 col-lg-8">
+                <h4 class="mt-3">Entry Point</h4>
                 <pre class="line-numbers">
                     <code class="language-js">
-                        function displayMessage() {
-                            let inputBox = document.getElementById('message');
-                            let message = inputBox.value;
-                        
-                            Swal.fire(
-                                {
-                                    title: "Unthink",
-                                    text: message,
-                                    icon: "success",
-                                    backdrop: false                            
-                                }
-                            );                                
+                        function getValues() {
+                            // get an input element for startNumber and grab its value.
+                            let startNumber = document.getElementById('startNumber').value;
+                          
+                            // Do the same for endNumber
+                            let endNumber = document.getElementById('endNumber').value;
+                          
+                            // HTML strings need the data type converted to integers. 
+                            // This is the constructor
+                            startNumber = Number(startNumber)
+                            endNumber = Number(endNumber)
+                          
+                            // Validate if the input values are numbers before continuing or run 
+                            // error message.
+                            if (isNaN(startNumber) || isNaN(endNumber)) {
+                              // display an error message
+                              swal.fire({
+                                icon:'error',
+                                title: 'Oops!',
+                                backdrop: false,
+                                text: `Please enter a valid number for Unthink to work properly.`
+                              });
+                            } else {
+                              // run the function, passing the numbers, itll make an array 
+                              // and itll pass back an array.
+                              let generatedNumbers = generateValues(startNumber, endNumber);
+                              displayValues(generatedNumbers);
+                            }
+                          }
+                    </code>
+                </pre>
+
+
+                <h4 class="mt-5">Generate the list of numbers</h4>
+                <pre class="line-numbers">
+                    <code class="language-js">
+                        // generate a list of numbers between those 2 values
+                        function generateValues(start, end) {
+                            let numbers = [];
+
+                            for (let i = start; i <= end; i = i + 1) {
+                                numbers.push(i);
+                            }
+
+                            return numbers;
                         }
                     </code>
                 </pre>
+
+                <h4 class="mt-5">Display on the UI</h4>
+                <pre class="line-numbers">
+                    <code class="language-js">
+                        // display in results table
+                        function displayValues(numberArray) {
+
+                            // placeholder for storing numberArray = [0,1,2,3,....]
+                            let tableHtml = '';
+
+                            for (let index = 0; index < numberArray.length; index = index + 1) {
+
+                                let number = numberArray[index];
+                                let className = '';
+
+                                // if number is even
+                                if (number % 2 == 0) {
+                                    // write class 'even'
+                                    className = 'even'; 
+                                } else {      
+                                    // write class 'odd'
+                                    className = 'odd';
+                                }
+
+                                tableHtml += `<tr><td class="${className}">${number}</td></tr>`;
+                            }
+
+                            // grab an HTML Element by ID and store in a let to prepare to change property
+                            let tbody = document.getElementById('results');
+                            // Change property of HTML element
+                            tbody.innerHTML = tableHtml;
+                        }
+                    </code>
+                </pre>
+
             </div>
             <!-- The Code's Explination -->
             <div class="col-12 col-lg-4">
-                <p>The code is structured in one function</p>
-                <h5><code>displayMessage()</code></h5>
+                <h4>Functions used:</h4>
+                <h5><code>getValues()</code></h5>
+                <h5><code>generateValues()</code></h5>
+                <h5><code>displayValues()</code></h5>
+
+                <h4 class="mt-4">Logic used:</h4>
+                <h5>Entry Point - <code>getValues()</code></h5>
                 <p>
-                    The <code>displayMessage</code> function takes the
-                    value from the input and displays it as a sweet alert
+                    The <code>getValues</code> function grabs the value from the input when the user pushes the button.
+                    These values are then changed from strings to integers, validated, then if valid are sent to
+                    <code>generateValues</code> to be turned into an array of numbers between the two values.
+                </p>
+
+                <h5>Create all the needed Number - <code>generateValues()</code></h5>
+                <p>
+                    The <code>generateValues</code> takes in the parameters from <code>getValues</code> and creates an
+                    array of ints of all the numbers between the two values passed as a parameter and then returns the
+                    new array to <code>getValues</code> to be then passed to <code>displayValues</code>.
+                </p>
+
+                <h5>Display Table on UI - <code>displayValues()</code></h5>
+                <p>
+                    The <code>displayValues</code> takes in the parameters from <code>getValues</code> and creates a
+                    string variable that is used to create an HTML table. That string is then used to display on the UI
+                    by writting to the InnerHTML property on the page.
                 </p>
             </div>
 
